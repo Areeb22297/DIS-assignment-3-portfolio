@@ -6,6 +6,7 @@ import './Projects.css';
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const projectsRef = useRef(null);
+  const projectCardsRef = useRef([]);
 
   // Project data
   const projects = [
@@ -46,6 +47,32 @@ const Projects = () => {
   const closeModal = () => {
     setSelectedProject(null);
     document.body.style.overflow = 'auto';
+  };
+
+  const handleMouseMove = (e, index) => {
+    const card = projectCardsRef.current[index];
+    if (!card) return;
+    
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const deltaX = (x - centerX) / centerX;
+    const deltaY = (y - centerY) / centerY;
+    
+    // Apply transformation - soften the effect by dividing by a factor
+    card.style.transform = `perspective(1000px) rotateX(${deltaY * -5}deg) rotateY(${deltaX * 5}deg) translateZ(10px)`;
+  };
+  
+  const handleMouseLeave = (index) => {
+    const card = projectCardsRef.current[index];
+    if (!card) return;
+    
+    // Reset transformation
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
   };
 
   useEffect(() => {
@@ -97,8 +124,14 @@ const Projects = () => {
       <div className="container">
         <h2 className="section-title">My Projects</h2>
         <div ref={projectsRef} className="projects-container">
-          {projects.map((project) => (
-            <div className="project-card" key={project.id}>
+          {projects.map((project, index) => (
+            <div 
+              className="project-card magnetic-item" 
+              key={project.id}
+              ref={el => projectCardsRef.current[index] = el}
+              onMouseMove={(e) => handleMouseMove(e, index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+            >
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
                 <div className="project-overlay">

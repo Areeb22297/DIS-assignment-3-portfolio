@@ -32,6 +32,13 @@ const Testimonials = () => {
       image: 'https://randomuser.me/api/portraits/women/68.jpg',
       text: "John is an amazing teammate and developer. His code is clean, well-documented, and follows best practices. He's always willing to help others and brings positive energy to the team."
     },
+    {
+      id: 4,
+      name: 'David Wilson',
+      role: 'CEO at DigitalSolutions',
+      image: 'https://randomuser.me/api/portraits/men/76.jpg',
+      text: "We hired John for a complex e-commerce project, and he exceeded our expectations. His technical knowledge combined with business understanding delivered a platform that has significantly increased our conversion rates."
+    }
   ];
 
   const startSlideTimer = () => {
@@ -138,10 +145,10 @@ const Testimonials = () => {
             ))}
           </div>
           
-          <button className="slider-arrow prev" onClick={prevSlide}>
+          <button className="slider-arrow prev" onClick={prevSlide} aria-label="Previous testimonial">
             <ChevronLeft size={24} />
           </button>
-          <button className="slider-arrow next" onClick={nextSlide}>
+          <button className="slider-arrow next" onClick={nextSlide} aria-label="Next testimonial">
             <ChevronRight size={24} />
           </button>
           
@@ -151,6 +158,7 @@ const Testimonials = () => {
                 key={index} 
                 className={`slider-dot ${index === currentSlide ? 'active' : ''}`} 
                 onClick={() => handleDotClick(index)}
+                aria-label={`Go to testimonial ${index + 1}`}
               ></button>
             ))}
           </div>

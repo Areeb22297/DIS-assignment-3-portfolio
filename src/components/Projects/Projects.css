@@ -40,6 +40,13 @@
   transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.magnetic-item {
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
 }
 
 .project-card.animate {
@@ -48,7 +55,6 @@
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
