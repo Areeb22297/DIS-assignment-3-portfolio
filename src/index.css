@@ -1,0 +1,118 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 342 98% 66%;
+  --primary-foreground: 240 10% 4%;
+  --secondary: 263 74% 61%;
+  --secondary-foreground: 210 40% 96%;
+  --accent: 217 96% 61%;
+  --accent-foreground: 210 40% 96%;
+  --background: 330 25% 8%;
+  --card: 329 19% 12%;
+  --card-foreground: 210 40% 98%;
+  --popover: 329 19% 12%;
+  --popover-foreground: 210 40% 98%;
+  --muted: 317 24% 14%;
+  --muted-foreground: 215 16% 65%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 317 24% 14%;
+  --ring: 342 98% 66%;
+  --radius: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #1A1016;
+  color: #F8FAFC;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #fe547b;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #ff7e9c;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+/* Card styles */
+.modern-card {
+  @apply bg-card rounded-xl p-5 border border-border shadow-lg;
+}
+
+.glassmorphic {
+  @apply bg-opacity-20 backdrop-blur-lg border border-border shadow-lg;
+}
+
+/* Colored cards */
+.pink-card {
+  @apply bg-gradient-to-br from-card-pink to-[#ff7e9c] text-white;
+}
+
+.purple-card {
+  @apply bg-gradient-to-br from-card-purple to-[#9b6ff5] text-white;
+}
+
+.blue-card {
+  @apply bg-gradient-to-br from-card-blue to-[#5e9bff] text-white;
+}
+
+/* Progress ring */
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+  stroke-dasharray: 283;
+  transition: stroke-dashoffset 0.5s;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
